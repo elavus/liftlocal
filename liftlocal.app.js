@@ -23,7 +23,7 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
     var wod;
     var wodNumber;
 
-    vm.WODData = angular.extend({}, response.data);
+    vm.WODData = angular.extend({}, response.data).values;
 
     vm.WODs = [];
     for (var i = 1; i < vm.WODData.length; i++) {
@@ -61,7 +61,7 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
 
   function getSignupsOnSuccess(response) {
     var signup;
-    vm.SignupData = angular.extend({}, response.data);
+    vm.SignupData = angular.extend({}, response.data).values;
 
     vm.Signups = [];
     for (var i = 0; i < vm.SignupData.length; i++) {
