@@ -30,20 +30,20 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
       wod = {};
       wod.Day = getDay(i);
 
-      title = vm.WODData[1][i] + ' - ' + vm.WODData[5][i];
+      title = vm.WODData[i][1] + ' - ' + vm.WODData[i][5];
       wod.Title = title;
 
-      title = vm.WODData[6][i];
+      title = vm.WODData[i][6];
       wod.Description = splitText(title);
       wod.ShortDescription = shortText(title, 6);
 
-      title = vm.WODData[7][i];
+      title = vm.WODData[i][7];
       wod.Comments = splitText(title);
 
       wod.Primary = [];
       wod.Secondary = [];
       wod.Class = 'wodCellAny';
-      if (vm.WODData[4][i] == 'Yes') {
+      if (vm.WODData[i][4] == 'Yes') {
         wod.Class = 'wodCellCF';
       }
       vm.WODs[i] = wod;
@@ -63,21 +63,21 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
     var signup;
     vm.SignupData = angular.extend({}, response.data);
 
-    vm.Signups = {};
+    vm.Signups = [];
     for (var i = 0; i < vm.SignupData.length; i++) {
       signup = {};
-      signup.Name = cleanAthlete(vm.SignupData[1][i]);
+      signup.Name = cleanAthlete(vm.SignupData[i][1]);
 
       signup.IsCrossfitter = false;
-      if (vm.SignupData[2][i] == 'Yes') {
+      if (vm.SignupData[i][2] == 'Yes') {
         signup.IsCrossfitter = true;
       }
 
-      signup.Box = vm.SignupData[3][i];
-      signup.First = vm.SignupData[4][i];
-      signup.Second = vm.SignupData[5][i];
+      signup.Box = vm.SignupData[i][3];
+      signup.First = vm.SignupData[i][4];
+      signup.Second = vm.SignupData[i][5];
       signup.Community = false;
-      if (vm.SignupData[6][i] == 'Yes') {
+      if (vm.SignupData[i][6] == 'Yes') {
         signup.Community = true;
       }
 
