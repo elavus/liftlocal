@@ -26,24 +26,24 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
     vm.WODData = angular.extend({}, response.data);
 
     vm.WODs = [];
-    for (var i = 0; i < vm.WODData.feed.entry.length; i++) {
+    for (var i = 1; i < vm.WODData.length; i++) {
       wod = {};
       wod.Day = getDay(i);
 
-      title = vm.WODData.feed.entry[i].gsx$start.$t + ' - ' + vm.WODData.feed.entry[i].gsx$name.$t;
+      title = vm.WODData[1][i] + ' - ' + vm.WODData[5][i];
       wod.Title = title;
 
-      title = vm.WODData.feed.entry[i].gsx$description.$t;
+      title = vm.WODData[6][i];
       wod.Description = splitText(title);
       wod.ShortDescription = shortText(title, 6);
 
-      title = vm.WODData.feed.entry[i].gsx$notes.$t;
+      title = vm.WODData[7][i];
       wod.Comments = splitText(title);
 
       wod.Primary = [];
       wod.Secondary = [];
       wod.Class = 'wodCellAny';
-      if (vm.WODData.feed.entry[i].gsx$crossfitter.$t == 'Yes') {
+      if (vm.WODData[4][i] == 'Yes') {
         wod.Class = 'wodCellCF';
       }
       vm.WODs[i] = wod;
@@ -64,19 +64,20 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
     vm.SignupData = angular.extend({}, response.data);
 
     vm.Signups = {};
-    for (var i = 0; i < vm.SignupData.feed.entry.length; i++) {
+    for (var i = 0; i < vm.SignupData.length; i++) {
       signup = {};
-      signup.Name = cleanAthlete(vm.SignupData.feed.entry[i].gsx$name.$t);
+      signup.Name = cleanAthlete(vm.SignupData.feed.entry[i].gsx$enteryournamefirstandlast.$t);
+
       signup.IsCrossfitter = false;
-      if (vm.SignupData.feed.entry[i].gsx$crossfitter.$t == 'Yes') {
+      if (vm.SignupData.feed.entry[i].gsx$areyouacrossfittercurrently.$t == 'Yes') {
         signup.IsCrossfitter = true;
       }
 
-      signup.Box = vm.SignupData.feed.entry[i].gsx$box.$t;
-      signup.First = vm.SignupData.feed.entry[i].gsx$first.$t;
-      signup.Second = vm.SignupData.feed.entry[i].gsx$second.$t;
+      signup.Box = vm.SignupData.feed.entry[i].gsx$wheredoyoutrainnormally.$t;
+      signup.First = vm.SignupData.feed.entry[i].gsx$selectthefirstheroworkoutyouwouldliketodo.$t;
+      signup.Second = vm.SignupData.feed.entry[i].gsx$selectthesecondheroworkoutyouwouldliketodo.$t;
       signup.Community = false;
-      if (vm.SignupData.feed.entry[i].gsx$community.$t == 'Yes') {
+      if (vm.SignupData.feed.entry[i].gsx$wouldyouliketoparticipateinthecommunityworkoutatnoononsaturday724.$t == 'Yes') {
         signup.Community = true;
       }
 
@@ -97,11 +98,13 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
       }
 
       index = findWodIndex(vm.Signups[athlete].Second);
-      if (vm.Signups[athlete].IsCrossfitter) {
-        vm.WODs[index].Primary[vm.WODs[index].Primary.length] = createAthlete(vm.Signups[athlete]);
-      }
-      else {
-        vm.WODs[index].Secondary[vm.WODs[index].Secondary.length] = createAthlete(vm.Signups[athlete]);
+      if (index >= 0) {
+        if (vm.Signups[athlete].IsCrossfitter) {
+          vm.WODs[index].Primary[vm.WODs[index].Primary.length] = createAthlete(vm.Signups[athlete]);
+        }
+        else {
+          vm.WODs[index].Secondary[vm.WODs[index].Secondary.length] = createAthlete(vm.Signups[athlete]);
+        }
       }
 
       if (vm.Signups[athlete].Community) {
@@ -133,18 +136,16 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
 
     athlete = {};
     athlete.Name = cleanAthlete(signup.Name, signup.IsCrossfitter);
-    athlete.Needed = (athlete.Name.substring(0, 1) == '(');
     athlete.Class = "wodAthleteCell";
-    if (athlete.Needed) athlete.Class = "wodAthleteCellNeeded";
 
     return athlete;
   }
 
   function getDay(index) {
     var day;
-    day = "Saturday, July 24, 2021";
+    day = "Saturday, July 30, 2022";
     if (index < 12) {
-      day = "Friday, July 23, 2021";
+      day = "Friday, July 29, 2022";
     }
 
     return day;
