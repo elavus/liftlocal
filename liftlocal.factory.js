@@ -18,7 +18,7 @@
     }
 
     function getSignups() {
-      var promise = $http.get(getURL('Form&nbsp;Responses'));
+      var promise = $http.get(getURL('Responses'));
       return promise;
     }
 
