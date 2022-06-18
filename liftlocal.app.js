@@ -66,18 +66,18 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
     vm.Signups = {};
     for (var i = 0; i < vm.SignupData.length; i++) {
       signup = {};
-      signup.Name = cleanAthlete(vm.SignupData.feed.entry[i].gsx$enteryournamefirstandlast.$t);
+      signup.Name = cleanAthlete(vm.SignupData[1][i]);
 
       signup.IsCrossfitter = false;
-      if (vm.SignupData.feed.entry[i].gsx$areyouacrossfittercurrently.$t == 'Yes') {
+      if (vm.SignupData[2][i] == 'Yes') {
         signup.IsCrossfitter = true;
       }
 
-      signup.Box = vm.SignupData.feed.entry[i].gsx$wheredoyoutrainnormally.$t;
-      signup.First = vm.SignupData.feed.entry[i].gsx$selectthefirstheroworkoutyouwouldliketodo.$t;
-      signup.Second = vm.SignupData.feed.entry[i].gsx$selectthesecondheroworkoutyouwouldliketodo.$t;
+      signup.Box = vm.SignupData[3][i];
+      signup.First = vm.SignupData[4][i];
+      signup.Second = vm.SignupData[5][i];
       signup.Community = false;
-      if (vm.SignupData.feed.entry[i].gsx$wouldyouliketoparticipateinthecommunityworkoutatnoononsaturday724.$t == 'Yes') {
+      if (vm.SignupData[6][i] == 'Yes') {
         signup.Community = true;
       }
 
