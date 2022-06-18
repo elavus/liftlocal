@@ -8,6 +8,7 @@ liftLocalApp.controller('liftLocalController', ['$scope', '$interval', '$locatio
 function liftLocalController($scope, $interval, $location, liftLocalFactory) {
   var vm = this;
 
+  vm.ComingSoon = true;
   vm.activeWOD = null;
   vm.WODData = null;
 
@@ -24,7 +25,6 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
     var wodNumber;
 
     vm.WODData = angular.extend({}, response.data).values;
-
     vm.WODs = [];
     for (var i = 1; i < vm.WODData.length; i++) {
       wod = {};
