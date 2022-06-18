@@ -11,14 +11,14 @@
     };
 
     return service;
-    
-    function getWODs(date, program) {
+
+    function getWODs() {
       var promise = $http.get(getURL('WODs'));
       return promise;
     }
 
-    function getSignups(date, program) {
-      var promise = $http.get(getURL('Form Responses'));
+    function getSignups() {
+      var promise = $http.get(getURL('Form&nbsp;Responses'));
       return promise;
     }
 
@@ -28,9 +28,9 @@
       api = 'https://sheets.googleapis.com/v4/spreadsheets/1d0XTG-gt72C76ns3o5gOP1bg1_27CUrPkX-kwRkjUN4/values/' + sheet + '?key=AIzaSyBiLTaskmTWmp52vHzuXhp_k2CZ_XBnfSs';
       return api;
     }
-    
-    
-    
-    
+
+
+
+
   }
 })();
