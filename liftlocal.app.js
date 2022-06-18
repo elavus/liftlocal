@@ -64,7 +64,7 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
     vm.SignupData = angular.extend({}, response.data).values;
 
     vm.Signups = [];
-    for (var i = 0; i < vm.SignupData.length; i++) {
+    for (var i = 1; i < vm.SignupData.length; i++) {
       signup = {};
       signup.Name = cleanAthlete(vm.SignupData[i][1]);
 
