@@ -46,7 +46,7 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
       if (vm.WODData[i][4] == 'Yes') {
         wod.Class = 'wodCellCF';
       }
-      vm.WODs[i] = wod;
+      vm.WODs[i - 1] = wod;
     }
 
     response = undefined;
