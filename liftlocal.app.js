@@ -8,7 +8,7 @@ liftLocalApp.controller('liftLocalController', ['$scope', '$interval', '$locatio
 function liftLocalController($scope, $interval, $location, liftLocalFactory) {
   var vm = this;
 
-  vm.ComingSoon = true;
+  vm.ComingSoon = false;
   vm.activeWOD = null;
   vm.WODData = null;
 
