@@ -143,9 +143,9 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
 
   function getDay(index) {
     var day;
-    day = "Saturday, July 30, 2022";
+    day = "Saturday, July 22, 2023";
     if (index < 12) {
-      day = "Friday, July 29, 2022";
+      day = "Friday, July 21, 2023";
     }
 
     return day;
