@@ -75,9 +75,9 @@ function liftLocalController($scope, $interval, $location, liftLocalFactory) {
 
       signup.Box = vm.SignupData[i][3];
       signup.First = vm.SignupData[i][4];
-      signup.Second = vm.SignupData[i][5];
+      signup.Second = vm.SignupData[i][7];
       signup.Community = false;
-      if (vm.SignupData[i][6] == 'Yes') {
+      if (vm.SignupData[i][5] == 'Yes') {
         signup.Community = true;
       }
 
