@@ -12,45 +12,24 @@
     <!-- Desktop -->
     <div class="table">
         <div class="row">
-            <div class="headerCellMobile">2023 LiftLocal Schedule</div>
+            <div class="headerCellMobile">2023 LiftLocal</div>
+        </div>
+        <div class="row">
+            <div class="wodDayCellMobile">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="wodDayCellMobile">Elavus SC</div>
+        </div>
+        <div class="row">
+            <div class="wodDayCellMobile">903 E. Jefferson St.</div>
+        </div>
+        <div class="row">
+            <div class="wodDayCellMobile">Crawfordsville, IN 47933</div>
         </div>
         <hr />
-        <div class="row" ng-show="vm.ComingSoon">
-            <div class="headerCellMobile">Coming Soon...</div>
-        </div>
-    </div>
-
-    <div class="table" ng-hide="vm.ComingSoon">
-        <div ng-repeat="wod in vm.WODs" class="row">
-            <div class="{{wod.Class}}Mobile">
-                <div class="table">
-                    <br />
-                    <div class="row">
-                        <div class="wodDayCellMobile">{{wod.Day}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="wodTitleCellMobile">{{wod.Title}}</div>
-                    </div>
-                    <div ng-repeat="description in wod.Description track by $index" class="row">
-                        <div class="wodDescriptionCellMobile">{{description}}</div>
-                    </div>
-                    <div class="table">
-                        <div ng-repeat="athlete in wod.Primary track by $index" class="row">
-                            <div class="{{athlete.Class}}Mobile">🏋️ {{athlete.Name}}</div>
-                        </div>
-
-                        <div ng-repeat="athlete in wod.Secondary track by $index" class="row">
-                            <div class="{{athlete.Class}}Mobile">🏃 {{athlete.Name}}</div>
-                        </div>
-                    </div>
-                    <div ng-repeat="comment in wod.Comments track by $index" class="row">
-                        <div class="wodCommentCellMobile">{{comment}}</div>
-                    </div>
-                    <br />
-                </div>
-            </div>
-        </div>
-    </div>
+        <a class="button" href="LiftLocal2023.jpg">LiftLocal Event Flyer</a>
+        <a class="button" href="schedule.html">LiftLocal WOD Schedule</a>
+        <a class="button" href="https://forms.gle/61maAn74YFKCr48MA">LiftLocal Signup Form</a>
 </body>
 
 </html>
